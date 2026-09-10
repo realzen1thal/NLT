@@ -121,7 +121,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
-      <AdditionalIncludeDirectories>D:\Projects\no-look-tool\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\no-look-tool\include;D:\Projects\no-look-tool\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,18 +131,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="compression.cpp" />
-    <ClCompile Include="decrypt.cpp" />
-    <ClCompile Include="encrypt.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="settings.cpp" />
+	<ClCompile Include="source\main.cpp" />
+	<ClCompile Include="source\settings\settings.cpp" />
+	<ClCompile Include="source\features\compression\compression.cpp" />
+	<ClCompile Include="source\logic\encrypt\encrypt.cpp" />
+	<ClCompile Include="source\logic\decrypt\decrypt.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="common.h" />
-    <ClInclude Include="compression.h" />
-    <ClInclude Include="decrypt.h" />
-    <ClInclude Include="encrypt.h" />
-    <ClInclude Include="settings.h" />
+	<ClInclude Include="source\common.h" />
+	<ClInclude Include="source\settings\settings.h" />
+	<ClInclude Include="source\features\compression\compression.h" />
+	<ClInclude Include="source\logic\encrypt\encrypt.h" />
+	<ClInclude Include="source\logic\decrypt\decrypt.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,7 @@
 ﻿#include "common.h"
-#include "settings.h"
-#include "../encrypt.h"
-#include "../decrypt.h"
+#include "settings/settings.h"
+#include "logic/encrypt/encrypt.h"
+#include "logic/decrypt/decrypt.h"
 
 #include <sodium/sodium.h>
 #include <iostream>

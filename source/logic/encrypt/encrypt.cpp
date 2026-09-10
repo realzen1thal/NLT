@@ -1,7 +1,7 @@
 #include "encrypt.h"
-#include "../common.h"
-#include "../settings.h"
-#include "../compression.h"
+#include "../../common.h"
+#include "../../settings/settings.h"
+#include "../../features/compression/compression.h"
 
 #include <sodium/sodium.h>
 #include <fstream>

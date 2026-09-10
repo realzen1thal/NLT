@@ -8,14 +8,11 @@
     <Filter Include="source\features">
       <UniqueIdentifier>{4c0e8043-4602-49dc-9afb-691033b6408f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\logic">
-      <UniqueIdentifier>{362bac91-4d9b-44cd-a12e-cbc20198ae71}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\settings">
-      <UniqueIdentifier>{7d08be1a-c3c9-42e8-848b-5ff17a481515}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\features\compression">
       <UniqueIdentifier>{a4db2371-67b7-4308-9435-2cbc1b3274e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\logic">
+      <UniqueIdentifier>{362bac91-4d9b-44cd-a12e-cbc20198ae71}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\logic\encrypt">
       <UniqueIdentifier>{2c1a9b94-e540-416f-8dc4-eaf2c98530e9}</UniqueIdentifier>
@@ -23,38 +20,41 @@
     <Filter Include="source\logic\decrypt">
       <UniqueIdentifier>{56374081-c977-48df-9077-25acfc575ccd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\settings">
+      <UniqueIdentifier>{7d08be1a-c3c9-42e8-848b-5ff17a481515}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="source\main.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="settings.cpp">
+    <ClCompile Include="source\settings\settings.cpp">
       <Filter>source\settings</Filter>
     </ClCompile>
-    <ClCompile Include="compression.cpp">
+    <ClCompile Include="source\features\compression\compression.cpp">
       <Filter>source\features\compression</Filter>
     </ClCompile>
-    <ClCompile Include="encrypt.cpp">
+    <ClCompile Include="source\logic\encrypt\encrypt.cpp">
       <Filter>source\logic\encrypt</Filter>
     </ClCompile>
-    <ClCompile Include="decrypt.cpp">
+    <ClCompile Include="source\logic\decrypt\decrypt.cpp">
       <Filter>source\logic\decrypt</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="common.h">
+    <ClInclude Include="source\common.h">
       <Filter>source</Filter>
     </ClInclude>
-    <ClInclude Include="settings.h">
+    <ClInclude Include="source\settings\settings.h">
       <Filter>source\settings</Filter>
     </ClInclude>
-    <ClInclude Include="compression.h">
+    <ClInclude Include="source\features\compression\compression.h">
       <Filter>source\features\compression</Filter>
     </ClInclude>
-    <ClInclude Include="encrypt.h">
+    <ClInclude Include="source\logic\encrypt\encrypt.h">
       <Filter>source\logic\encrypt</Filter>
     </ClInclude>
-    <ClInclude Include="decrypt.h">
+    <ClInclude Include="source\logic\decrypt\decrypt.h">
       <Filter>source\logic\decrypt</Filter>
     </ClInclude>
   </ItemGroup>
