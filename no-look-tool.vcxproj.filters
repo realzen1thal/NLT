@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="source\features">
+      <UniqueIdentifier>{4c0e8043-4602-49dc-9afb-691033b6408f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\logic">
+      <UniqueIdentifier>{362bac91-4d9b-44cd-a12e-cbc20198ae71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\settings">
+      <UniqueIdentifier>{7d08be1a-c3c9-42e8-848b-5ff17a481515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\features\compression">
+      <UniqueIdentifier>{a4db2371-67b7-4308-9435-2cbc1b3274e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\logic\encrypt">
+      <UniqueIdentifier>{2c1a9b94-e540-416f-8dc4-eaf2c98530e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\logic\decrypt">
+      <UniqueIdentifier>{56374081-c977-48df-9077-25acfc575ccd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="settings.cpp">
+      <Filter>source\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="compression.cpp">
+      <Filter>source\features\compression</Filter>
+    </ClCompile>
+    <ClCompile Include="encrypt.cpp">
+      <Filter>source\logic\encrypt</Filter>
+    </ClCompile>
+    <ClCompile Include="decrypt.cpp">
+      <Filter>source\logic\decrypt</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="settings.h">
+      <Filter>source\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="compression.h">
+      <Filter>source\features\compression</Filter>
+    </ClInclude>
+    <ClInclude Include="encrypt.h">
+      <Filter>source\logic\encrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="decrypt.h">
+      <Filter>source\logic\decrypt</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
