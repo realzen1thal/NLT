@@ -14,6 +14,42 @@
 
 namespace fs = std::filesystem;
 
+// Overwrites the file's on-disk contents with random bytes before it gets
+// removed, so the plaintext doesn't just linger in unlinked disk blocks.
+static void secure_overwrite(const std::string& path) {
+    std::error_code ec;
+    auto sz = fs::file_size(path, ec);
+    if (ec) return; // file missing or inaccessible; nothing to overwrite
+
+    std::ofstream f(path, std::ios::binary | std::ios::in | std::ios::out);
+    if (!f) return;
+
+    std::vector<unsigned char> buf((std::min)((uint64_t)sz, (uint64_t)(1 << 20)));
+    uint64_t remaining = sz;
+    while (remaining > 0) {
+        size_t chunk = (std::min)((uint64_t)buf.size(), remaining);
+        randombytes_buf(buf.data(), chunk);
+        f.write((char*)buf.data(), chunk);
+        remaining -= chunk;
+    }
+    f.flush();
+}
+
+// RAII guard: deletes the tmp file if it's still armed when destroyed
+// (i.e. we left scope via an exception/early return before disarm() ran).
+struct TmpGuard {
+    std::string path;
+    bool armed = true;
+    explicit TmpGuard(std::string p) : path(std::move(p)) {}
+    void disarm() { armed = false; }
+    ~TmpGuard() {
+        if (armed) {
+            std::error_code ec;
+            fs::remove(path, ec);
+        }
+    }
+};
+
 void do_encrypt(const std::string& path, const std::string& pw, bool compress) {
     std::ifstream fin(path, std::ios::binary | std::ios::ate);
     if (!fin) throw std::runtime_error("Cannot open: " + path);
@@ -39,6 +75,7 @@ void do_encrypt(const std::string& path, const std::string& pw, bool compress) {
     std::string tmp = path + ".tmp";
     std::ofstream fout(tmp, std::ios::binary);
     if (!fout) throw std::runtime_error("Cannot create temp");
+    TmpGuard tmp_guard(tmp);
 
     uint8_t fl = compress ? FLAG_COMPRESSED : 0;
     fout.write((char*)salt.p(), SALT_LEN);
@@ -91,7 +128,10 @@ void do_encrypt(const std::string& path, const std::string& pw, bool compress) {
     }
 
     fin.close(); fout.close(); pb.done();
-    fs::remove(path); fs::rename(tmp, path);
+    secure_overwrite(path);
+    fs::remove(path);
+    tmp_guard.disarm();
+    fs::rename(tmp, path);
 
     auto final_sz = fs::file_size(path);
     std::cout << "[+] Encrypted: " << path
