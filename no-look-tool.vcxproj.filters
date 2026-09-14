@@ -23,6 +23,12 @@
     <Filter Include="source\settings">
       <UniqueIdentifier>{7d08be1a-c3c9-42e8-848b-5ff17a481515}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\features\s_secretsharing">
+      <UniqueIdentifier>{f38b26da-0262-4f7e-819f-d8dbcc610c61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\features\s_secretsharing\algorithm">
+      <UniqueIdentifier>{533b331c-6b74-453a-ac8e-2f7b587a660c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -40,6 +46,12 @@
     <ClCompile Include="source\logic\decrypt\decrypt.cpp">
       <Filter>source\logic\decrypt</Filter>
     </ClCompile>
+    <ClCompile Include="source\features\s_secretsharing\algorithm\sss.cpp">
+      <Filter>source\features\s_secretsharing\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="source\features\s_secretsharing\sss_shares.cpp">
+      <Filter>source\features\s_secretsharing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\common.h">
@@ -56,6 +68,12 @@
     </ClInclude>
     <ClInclude Include="source\logic\decrypt\decrypt.h">
       <Filter>source\logic\decrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="source\features\s_secretsharing\algorithm\sss.h">
+      <Filter>source\features\s_secretsharing\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="source\features\s_secretsharing\sss_shares.h">
+      <Filter>source\features\s_secretsharing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

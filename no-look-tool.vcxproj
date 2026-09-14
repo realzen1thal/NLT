@@ -131,18 +131,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-	<ClCompile Include="source\main.cpp" />
-	<ClCompile Include="source\settings\settings.cpp" />
-	<ClCompile Include="source\features\compression\compression.cpp" />
-	<ClCompile Include="source\logic\encrypt\encrypt.cpp" />
-	<ClCompile Include="source\logic\decrypt\decrypt.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\settings\settings.cpp" />
+    <ClCompile Include="source\features\compression\compression.cpp" />
+    <ClCompile Include="source\logic\encrypt\encrypt.cpp" />
+    <ClCompile Include="source\logic\decrypt\decrypt.cpp" />
+    <ClCompile Include="source\features\s_secretsharing\algorithm\sss.cpp" />
+    <ClCompile Include="source\features\s_secretsharing\sss_shares.cpp" />
   </ItemGroup>
   <ItemGroup>
-	<ClInclude Include="source\common.h" />
-	<ClInclude Include="source\settings\settings.h" />
-	<ClInclude Include="source\features\compression\compression.h" />
-	<ClInclude Include="source\logic\encrypt\encrypt.h" />
-	<ClInclude Include="source\logic\decrypt\decrypt.h" />
+    <ClInclude Include="source\common.h" />
+    <ClInclude Include="source\settings\settings.h" />
+    <ClInclude Include="source\features\compression\compression.h" />
+    <ClInclude Include="source\logic\encrypt\encrypt.h" />
+    <ClInclude Include="source\logic\decrypt\decrypt.h" />
+    <ClInclude Include="source\features\s_secretsharing\algorithm\sss.h" />
+    <ClInclude Include="source\features\s_secretsharing\sss_shares.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

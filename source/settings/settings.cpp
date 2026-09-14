@@ -18,13 +18,21 @@ BufferConfig get_optimal_buffer(uint64_t file_size) {
 }
 
 void print_usage(const char* prog) {
-    std::cerr << "Usage:\n  " << prog << " encrypt <file> [--nocompression]\n"
-        << "  " << prog << " decrypt <file>\n\n"
+    std::cerr << "Usage:\n"
+        << "  " << prog << " encrypt <file> [--nocompression] [--sss N-K]\n"
+        << "  " << prog << " decrypt <file> [--sss-shares f1.nlt f2.nlt ...] [--sss-dir <folder>]\n\n"
         << "Password:\n"
         << "  Interactive terminal -> masked prompt.\n"
         << "  Piped/redirected stdin -> password read from stdin, e.g.:\n"
         << "    cat secret.txt | " << prog << " encrypt file.bin\n"
-        << "    " << prog << " encrypt file.bin <<< \"$MY_PASSWORD\"\n";
+        << "    " << prog << " encrypt file.bin <<< \"$MY_PASSWORD\"\n\n"
+        << "Shamir Secret Sharing (--sss N-K):\n"
+        << "  Generates a strong random password (no prompt/stdin used) and\n"
+        << "  splits it into N shares, K of which are required to reconstruct it.\n"
+        << "  Writes N files: <file>.share1.nlt .. <file>.shareN.nlt\n"
+        << "  Example: " << prog << " encrypt test.txt --sss 5-3 --nocompression\n\n"
+        << "  To decrypt an SSS-protected file, provide >= K shares via\n"
+        << "  --sss-shares (list files) or --sss-dir (a folder containing them).\n";
 }
 
 bool parse_cli(int argc, char** argv, CliOptions& out) {
@@ -40,6 +48,20 @@ bool parse_cli(int argc, char** argv, CliOptions& out) {
     for (int i = 3; i < argc; ++i) {
         if (!strcmp(argv[i], "--nocompression")) {
             out.no_compression = true;
+        }
+        else if (!strcmp(argv[i], "--sss") && i + 1 < argc) {
+            out.sss_spec = argv[++i];
+        }
+        else if (!strcmp(argv[i], "--sss-dir") && i + 1 < argc) {
+            out.sss_share_dir = argv[++i];
+        }
+        else if (!strcmp(argv[i], "--sss-shares")) {
+            // Consumes all following non-flag args as share file paths,
+            // stopping at the next token that looks like a flag (starts
+            // with "--") or at the end of argv.
+            while (i + 1 < argc && strncmp(argv[i + 1], "--", 2) != 0) {
+                out.sss_share_files.push_back(argv[++i]);
+            }
         }
     }
     return true;
